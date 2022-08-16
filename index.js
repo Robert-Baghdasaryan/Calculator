@@ -1,6 +1,7 @@
 const display = document.querySelector(".display");
 const equal = document.getElementById("equal");
 const clearAll = document.getElementById("clear");
+const deleteNum= document.getElementById('del');
 
 clearAll.addEventListener("click", function () {
   display.value = "";
@@ -9,6 +10,11 @@ clearAll.addEventListener("click", function () {
 equal.addEventListener("click", function () {
   display.value = calc(display.value);
 });
+
+deleteNum.addEventListener('click',function (){
+  display.value = display.value.slice(0, - 1);
+});
+
 
 function catchbutton(value) {
   display.value = display.value + value.innerHTML;
