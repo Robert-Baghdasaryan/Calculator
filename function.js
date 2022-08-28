@@ -1,25 +1,33 @@
 const display = document.querySelector(".display");
 const equal = document.getElementById("equal");
 const clearAll = document.getElementById("clear");
-const deleteNum= document.getElementById('del');
+const deleteNum = document.getElementById("del");
 
 clearAll.addEventListener("click", function () {
   display.value = "";
 });
 
-
 equal.addEventListener("click", function () {
   display.value = calc(display.value);
 });
 
-
-deleteNum.addEventListener('click',function (){
-  display.value = display.value.slice(0, - 1);
+deleteNum.addEventListener("click", function () {
+  display.value = display.value.slice(0, -1);
 });
 
+display.addEventListener("keyup", function (key) {
+  equal.disabled = is_error(display.innerHTML) ? true : false;
+  if (key.key === "Enter") {
+    equal.click();
+  }
+});
 
 function catchbutton(value) {
   display.value = display.value + value.innerHTML;
+}
+
+function is_error(str) {
+  return str === "Error: Invalid expression";
 }
 
 function priority(sign) {
